@@ -1,0 +1,12 @@
+{
+  "ERROR": {
+    "FORM": {
+      "REQUIRED": "{{label}} é obrigatório.",
+      "MINLENGTH": "{{label}} tem que ter pelo menos {{requiredLength}} caráteres.",
+      "MAXLENGTH": "{{label}} tem que ter no máximo {{requiredLength}} caráteres.",
+      "MIN": "{{label}} tem que ser no mínimo {{min}}.",
+      "MAX": "{{label}} tem que ser no máximo {{max}}.",
+      "EMAIL": "{{label}} tem que ser um e-mail válido."
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <h2>Example form</h2>
+    </div>
+    <div class="row g-5">
+      <div class="col-12">
+        <form [formGroup]="formData" (ngSubmit)="submitForm()">
+          <div class="row g-3">
+            <form-element type="checkbox" formControlName="status" label="Status" class="col-sm-12"></form-element>
+            <form-element type="text" formControlName="first_name" label="First Name" [required]="true" class="col-sm-6"></form-element>
+            <form-element type="text" formControlName="last_name" label="Last Name" [required]="true" class="col-sm-6"></form-element>
+            <form-element type="email" formControlName="email" label="Email Address" [required]="true" class="col-sm-6"></form-element>
+            <form-element type="tel" formControlName="phone_number" label="Phone Number" class="col-sm-6"></form-element>
+            <form-element type="number" formControlName="age" label="Your Age" [required]="true" class="col-sm-4"></form-element>
+            <form-element type="file" formControlName="file" label="File" class="col-sm-4"></form-element>
+            <form-element type="select" formControlName="genre" label="Genre" [required]="true" [selectList]="genreList" selectValue="code" class="col-sm-4"></form-element>
+            <form-element type="textarea" formControlName="text" label="Text" [required]="true" class="col-sm-12"></form-element>
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>

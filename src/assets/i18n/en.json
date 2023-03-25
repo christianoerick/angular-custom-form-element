@@ -1,0 +1,12 @@
+{
+  "ERROR": {
+    "FORM": {
+      "REQUIRED": "{{label}} is required.",
+      "MINLENGTH": "{{label}} must have at least {{requiredLength}} chars.",
+      "MAXLENGTH": "{{label}} must have max {{requiredLength}} chars.",
+      "MIN": "{{label}} must be min {{min}}.",
+      "MAX": "{{label}} must be max {{max}}.",
+      "EMAIL": "{{label}} must be a valid email address."
+    }
+  }
+}

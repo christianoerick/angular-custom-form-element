@@ -1,0 +1,91 @@
+<div *ngIf="type == 'checkbox'" class="form-check me-3">
+  <input class="form-check-input" type="checkbox" id="fi_{{id}}" />
+  <label class="form-check-label" for="fi_{{id}}">{{ label }}</label>
+</div>
+
+<div *ngIf="type != 'checkbox'" class="{{ classDiv }}">
+  <label *ngIf="label" for="fi_{{id}}" class="form-label {{ classLabel }}">{{label}}<sup *ngIf="required" class="required"> *</sup></label>
+  <div>
+    <input
+      *ngIf="['text','email','number','tel'].includes(type)"
+      [type]="type"
+      [placeholder]="placeholder"
+      [(ngModel)]="value"
+      (ngModelChange)="onChange($event);onModelChange($event);"
+      (change)="onEventChange($event)"
+      (click)="onEventClick($event)"
+      (blur)="onEventBlur($event)"
+      (focus)="onEventFocus($event)"
+      (keydown)="onEventKeyDown($event)"
+      (keyup)="onEventKeyUp($event)"
+      [maxlength]="(maxlength>0)?maxlength:255"
+      [minlength]="(minlength>0)?minlength:0"
+      [attr.max]="(max>0)?max:null"
+      [attr.min]="(min>0)?min:null"
+      [readonly]="readonly"
+      [disabled]="disabled"
+      [attr.required]="(required)?true:null"
+      class="form-control {{ ((validators.length)?'is-invalid':((control.touched)?'is-valid':'')) + ' ' + classInput }}"
+      id="fi_{{id}}"
+    />
+    <input
+      *ngIf="['file','image'].includes(type)"
+      type="file"
+      [placeholder]="placeholder"
+      [(ngModel)]="value"
+      (ngModelChange)="onChange($event);onModelChange($event);"
+      (change)="onEventChange($event)"
+      (click)="onEventClick($event)"
+      (blur)="onEventBlur($event)"
+      (focus)="onEventFocus($event)"
+      (keydown)="onEventKeyDown($event)"
+      (keyup)="onEventKeyUp($event)"
+      [readonly]="readonly"
+      [disabled]="disabled"
+      [attr.required]="(required)?true:null"
+      class="form-control {{ ((validators.length)?'is-invalid':((control.touched)?'is-valid':'')) + ' ' + classInput }}"
+      id="fi_{{id}}"
+      [accept]="fileExtensions"
+    />
+    <textarea
+      *ngIf="['textarea'].includes(type)"
+      [(ngModel)]="value"
+      [placeholder]="placeholder"
+      (ngModelChange)="onChange($event);onModelChange($event);"
+      (change)="onEventChange($event)"
+      (click)="onEventClick($event)"
+      (blur)="onEventBlur($event)"
+      (focus)="onEventFocus($event)"
+      (keydown)="onEventKeyDown($event)"
+      (keyup)="onEventKeyUp($event)"
+      [maxlength]="(maxlength>0)?maxlength:255"
+      [minlength]="(minlength>0)?minlength:0"
+      [readonly]="readonly"
+      [disabled]="disabled"
+      [attr.required]="(required)?true:null"
+      class="form-control {{ ((validators.length)?'is-invalid':((control.touched)?'is-valid':'')) + ' ' + classInput }}"
+      id="fi_{{id}}"
+      [rows]="textareaRows"></textarea>
+    <select
+      *ngIf="['select'].includes(type)"
+      [(ngModel)]="value"
+      (ngModelChange)="onChange($event);onModelChange($event);"
+      (change)="onEventChange($event)"
+      (click)="onEventClick($event)"
+      (blur)="onEventBlur($event)"
+      (focus)="onEventFocus($event)"
+      (keydown)="onEventKeyDown($event)"
+      (keyup)="onEventKeyUp($event)"
+      [disabled]="disabled"
+      [attr.required]="(required)?true:null"
+      class="form-select {{ ((validators.length)?'is-invalid':((control.touched)?'is-valid':'')) + ' ' + classInput }}"
+      id="fi_{{id}}">
+      <option *ngFor="let option of selectList" [value]="option[selectValue]">{{ option[selectLabel] }}</option>
+    </select>
+    <div class="form-error-message" *ngIf="validators.length > 0">
+      <ng-container *ngFor="let validator of validators">
+        <small class="d-block invalid-feedback">{{(getTranslateError(validator.toUpperCase())|async)||(getTranslateError(validator.toUpperCase(), false)|async)||(getTranslateError(validator.toUpperCase(), false, false)|async)}}</small>
+      </ng-container>
+    </div>
+  </div>
+</div>
